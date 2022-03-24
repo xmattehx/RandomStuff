@@ -1,6 +1,14 @@
 #Define providers used
+terraform {
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "=3.0.1"
+    }
+  }
+}
+
 provider "azurerm" {
-  version = "=2.11"
   features {} #This is required for v2 of the provider even if empty or plan will fail
 }
 
@@ -11,7 +19,7 @@ data "azurerm_resource_group" "ResGroup" {
 
 #Resource section
 resource "azurerm_storage_account" "StorAccount1" {
-  name                     = "savtechtfstorage"
+  name                     = "mattehoutlook90tfstorage"
   resource_group_name      = data.azurerm_resource_group.ResGroup.name
   location                 = data.azurerm_resource_group.ResGroup.location
   account_kind             = "StorageV2"
